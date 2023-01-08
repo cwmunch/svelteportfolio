@@ -1,52 +1,31 @@
 <script context="module">
+	import ProjectCard from '$lib/components/project-card/project-card.svelte';
 	import { client } from '$lib/graphql-client';
-	import { projectQuery } from '$lib/graphql-queries';
-	import { marked } from 'marked';
+	import { projectsQuery } from '$lib/graphql-queries';
 
-	export const load = async ({ params }) => {
-		const { slug } = params;
-		const variables = { slug };
-		const { project } = await client.request(projectQuery, variables);
+	export const load = async () => {
+		const { projects } = await client.request(projectsQuery);
 
 		return {
 			props: {
-				project
+				projects
 			}
 		};
 	};
 </script>
 
 <script>
-	export let project;
+	export let projects;
 </script>
 
 <svelte:head>
-	<title>My Portfolio | {project.name}</title>
+	<title>My Portfolio projects</title>
 </svelte:head>
 
-<div class="sm:-mx-5 md:-mx-10 lg:-mx-20 xl:-mx-38 mb-5">
-	<img class="rounded-lg" src={project.image[0].url} alt={project.title} />
+<h1 class="font-bold mb-20 text-center text-5xl">My Projects</h1>
+
+<div class="grid gap-10 md:grid-cols-4 md:px-10 max-w-screen-xl2">
+	{#each projects as { name, slug, description, image }, index}
+		<ProjectCard {name} {description} url={image[0].url} {index} {slug} />
+	{/each}
 </div>
-
-<h1 class="text-4xl font-semibold mb-5">{project.name}</h1>
-
-<div class="mb-5 flex justify-between">
-	<div>
-		{#if project.tags}
-			{#each project.tags as tag}
-				<div class="badge badge-primary mr-2 hover:bg-primary-focus cursor-pointer">
-					{tag}
-				</div>
-			{/each}
-		{/if}
-	</div>
-</div>
-
-<div class="mb-5 prose flex prose-a:text-primary hover:prose-a:text-primary-focus">
-	<a class="mr-5" href={project.demo}>Demo</a>
-	<a href={project.sourceCode}>Source Code</a>
-</div>
-
-<article class="prose prose-xl">
-	{@html marked(project.description)}
-</article>
