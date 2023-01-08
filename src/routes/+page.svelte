@@ -23,8 +23,8 @@
 </script>
 
 <script>
-	export let projects;
-	export let authors;
+	export let projects = [];
+	export let authors = [];
 </script>
 
 <svelte:head>
