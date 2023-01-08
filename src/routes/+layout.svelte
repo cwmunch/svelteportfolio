@@ -1,7 +1,11 @@
 <script>
 	import '../app.postcss';
+	import Footer from '$lib/components/footer/footer.svelte';
+	import Navbar from '$lib/components/navbar/navbar.svelte';
 </script>
 
-<main class="container max-w-3xl mx-auto px-4 mb-20">
+<Navbar />
+<main class="container max-w-screen-2xl mx-auto px-8 mb-20">
 	<slot />
 </main>
+<Footer />

@@ -34,7 +34,9 @@
 	<div>
 		{#if project.tags}
 			{#each project.tags as tag}
-				<span class="badge badge-primary mr-2 hover:bg-primary-focus cursor-pointer">{tag}</span>
+				<div class="badge badge-primary mr-2 hover:bg-primary-focus cursor-pointer">
+					{tag}
+				</div>
 			{/each}
 		{/if}
 	</div>

@@ -2,3 +2,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+	:root {
+		--color-text-base: 229, 229, 229;
+		--color-text-muted: 30, 30, 35;
+		--color-text-inverted: 37, 230, 163;
+		--color-fill: 30, 30, 35;
+		--color-button-accent: 37, 230, 163;
+		--color-button-accent-hover: 29, 179, 126;
+	}
+}
+
+.bg-gradient {
+	height: 100%;
+	background: #1e1e1e; /* fallback for old browsers */
+	background: -webkit-linear-gradient(
+		to bottom right,
+		#1e1e1e,
+		#0c2344
+	); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(
+		to bottom right,
+		#1e1e1e,
+		#0c2344
+	); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
