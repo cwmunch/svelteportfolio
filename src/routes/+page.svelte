@@ -1,6 +1,6 @@
 <script context="module">
 	import ProjectCard from '$lib/components/project-card/project-card.svelte';
-	import Demographics from '../lib/components/demographics/demographics.svelte';
+	import Demographics from '$lib/components/demographics/demographics.svelte';
 	import { client } from '$lib/graphql-client';
 	import { authorsQuery, projectsQuery } from '$lib/graphql-queries';
 	import { scrollTo, scrollRef, scrollTop } from 'svelte-scrolling';
