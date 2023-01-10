@@ -20,9 +20,7 @@
 			}
 		};
 	};
-</script>
 
-<script>
 	export let projects = [];
 	export let authors = [];
 </script>
