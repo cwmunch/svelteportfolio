@@ -1,9 +1,9 @@
 <script context="module">
-	import ProjectCard from '$lib/components/project-card/project-card.svelte';
+	import ProjectCard from '$lib/components/projectCard/projectCard.svelte';
 	import Demographics from '$lib/components/demographics/demographics.svelte';
 	import { client } from '$lib/graphql-client';
 	import { authorsQuery, projectsQuery } from '$lib/graphql-queries';
-	import { scrollTo, scrollRef, scrollTop } from 'svelte-scrolling';
+	// import { scrollTo, scrollRef, scrollTop } from 'svelte-scrolling';
 
 	export const load = async () => {
 		const [authorReq, projectsReq] = await Promise.all([
@@ -100,7 +100,7 @@
 	</div>
 {/each}
 
-<div use:scrollRef={'demographics'}>
+<div>
 	<h2
 		class="text-5xl mb-4 pt-5
  tracking-wider"
@@ -109,6 +109,16 @@
 	</h2>
 	<Demographics />
 </div>
+<!-- 
+<div use:scrollRef={'demographics'}>
+	<h2
+		class="text-5xl mb-4 pt-5
+ tracking-wider"
+	>
+		About me
+	</h2>
+	<Demographics />
+</div> -->
 
 <div class="grid gap-10 md:grid-cols-4 max-w-screen-xl2">
 	{#each projects as { name, slug, description, image }}
