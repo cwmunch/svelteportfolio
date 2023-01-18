@@ -1,28 +1,24 @@
 <script context="module">
 	import ProjectCard from '$lib/components/projectCard/projectCard.svelte';
 	import Demographics from '$lib/components/demographics/demographics.svelte';
-	import { client } from '$lib/graphql-client';
-	import { authorsQuery, projectsQuery } from '$lib/graphql-queries';
 	// import { scrollTo, scrollRef, scrollTop } from 'svelte-scrolling';
 
-	export const load = async () => {
-		const [authorReq, projectsReq] = await Promise.all([
-			client.request(authorsQuery),
-			client.request(projectsQuery)
-		]);
-		const { authors } = authorReq;
-		const { projects } = projectsReq;
+	//------------------------------------ERROR MED UNDEFINED READING LENGHT
+	// export let authors;
+	// export let projects;
 
-		return {
-			props: {
-				projects,
-				authors
-			}
-		};
-	};
-
-	export let projects = [];
+	//------------------------------------INGEN ERROR MEN ARRAY ER TOMT/UNDEFINED
 	export let authors = [];
+	export let projects = [];
+
+	//------------------------------------KAN IKKE HUSKE HVAD JEG TÆNKTE HER
+	// export let authorsData;
+	// const { authors } = authorsData;
+
+	// export let projectsData;
+	// const { projects } = projectsData;
+
+	console.log(projects);
 </script>
 
 <svelte:head>
@@ -125,3 +121,7 @@
 		<ProjectCard {name} {description} url={image[0].url} {slug} />
 	{/each}
 </div>
+
+[6, 11, 16, 35, 44, (2, 6)] [7, 14, 34, 41, 49, (4, 9)] [9, 16, 27, 41, 45, (1, 4)] [14, 28, 31, 47,
+50, (7, 12)] [28, 29, 31, 37, 50, (4, 5)] [3, 37, 45, 47, 50, (5, 10)] [28, 33, 34, 37, 44, (4, 11)]
+[9, 34, 35, 42, 44, (6, 11)] [6, 11, 26, 43, 49, (5, 8)] [9, 14, 15, 20, 47, (8, 12)]
